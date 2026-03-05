@@ -3,11 +3,12 @@
     "description": "string",
     "questions": [
         {
+            "id": "string/UUID"
             "name": "string",
             "description": "string",
             "sortOrder": 1,
             "options": [
-                { "value": "string", "label": "string", "sortOrder": 1 }
+                { "id": "string/UUID", "value": "string", "label": "string", "sortOrder": 1 }
             ],
             "correctValues": ["string"]
         }
