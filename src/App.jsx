@@ -1,6 +1,7 @@
 import { APITester } from "./APITester";
 import "./index.css";
 import { QuizMeta } from "./components/QuizMeta";
+import { QuestionList } from "./components/QuestionList";
 
 import logo from "./logo.svg";
 import reactLogo from "./react.svg";
@@ -15,7 +16,7 @@ export function App() {
     <div className="app">
       <main className="editor">
         <QuizMeta quiz={quiz} onChange={setQuiz}/>
-        
+        <QuestionList/>
       </main>
     </div>
   );
