@@ -1,0 +1,15 @@
+{
+    "name": "string",
+    "description": "string",
+    "questions": [
+        {
+            "name": "string",
+            "description": "string",
+            "sortOrder": 1,
+            "options": [
+                { "value": "string", "label": "string", "sortOrder": 1 }
+            ],
+            "correctValues": ["string"]
+        }
+    ]
+}
