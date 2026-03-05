@@ -1,5 +1,5 @@
 
-export function QuestionList() {
+export function QuestionList({questions}) {
   return (
     <div className="question-list">
       <div className="question-list-header">

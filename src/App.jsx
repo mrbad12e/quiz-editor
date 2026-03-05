@@ -16,7 +16,7 @@ export function App() {
     <div className="app">
       <main className="editor">
         <QuizMeta quiz={quiz} onChange={setQuiz}/>
-        <QuestionList/>
+        <QuestionList questions={quiz.questions}/>
       </main>
     </div>
   );

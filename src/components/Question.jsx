@@ -6,8 +6,19 @@ Each multiple-choice question should have:
  - A list of options (at least 2 options)
  - A list of values of correct options (at least 1 option value)
 */
+import { OptionItem } from "./OptionItem";
 
-export function Question() {
+export function Question({question}) {
+  function addOption() {
+    const newOption = {
+      id: crypto.randomUUID(),
+      value: "",
+      label: "",
+      sortOrder: question.options.length + 1,
+    };
+    onUpdate({ ...question, options: [...question.options, newOption] });
+  }
+
   
   return (
     <div className="question-card card">
@@ -23,6 +34,8 @@ export function Question() {
         <input
           type="text"
           placeholder="Enter question name"
+          value={question.name}
+          onChange={e => updateField("name", e.target.value)}
         />
       </div>
 
@@ -30,6 +43,8 @@ export function Question() {
         <label>Description</label>
         <textarea
           placeholder="Optional description"
+          value={question.description}
+          onChange={e => updateField("description", e.target.value)}
         />
       </div>
 
@@ -38,6 +53,9 @@ export function Question() {
         <input
           type="number"
           className="sort-input"
+          value={question.sortOrder}
+          onChange={e => updateField("sortOrder", Number(e.target.value))}
+          min={1}
         />
       </div>
 
@@ -48,10 +66,15 @@ export function Question() {
             <span>Value</span>
             <span>Label</span>
             <span>Sort</span>
-            <span></span>
           </div>
         </div>
+
+        <button type="button" className="btn-secondary" onClick={addOption}>
+          + Add Option
+        </button>
       </div>
+
+      
 
     </div>
   );
