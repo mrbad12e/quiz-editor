@@ -8,7 +8,11 @@ Each multiple-choice question should have:
 */
 import { OptionItem } from "./OptionItem";
 
-export function Question({question}) {
+export function Question({question, onUpdate}) {
+  function updateField(field, value) {
+    onUpdate({ ...question, [field]: value });
+  }
+  
   function addOption() {
     const newOption = {
       id: crypto.randomUUID(),
@@ -68,6 +72,14 @@ export function Question({question}) {
             <span>Sort</span>
           </div>
         </div>
+
+        {/*Implement OptionItem into each question*/}
+        {question.options.map(option => (
+          <OptionItem
+            key={option.id}
+            option={option}
+          />
+        ))}
 
         <button type="button" className="btn-secondary" onClick={addOption}>
           + Add Option
