@@ -8,7 +8,7 @@ Each multiple-choice question should have:
 */
 import { OptionItem } from "./OptionItem";
 
-export function Question({question, onUpdate}) {
+export function Question({question, onUpdate, onRemove}) {
   function updateField(field, value) {
     onUpdate({ ...question, [field]: value });
   }
@@ -64,7 +64,7 @@ export function Question({question, onUpdate}) {
     <div className="question-card card">
       <div className="question-header">
         <span className="question-number">Q{question.sortOrder}</span>
-        <button type="button" className="btn-remove" title="Remove question">
+        <button type="button" className="btn-remove" title="Remove question" onClick={onRemove}>
           ✕ Remove
         </button>
       </div>
