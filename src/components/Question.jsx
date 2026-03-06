@@ -7,6 +7,7 @@ Each multiple-choice question should have:
  - A list of values of correct options (at least 1 option value)
 */
 import { OptionItem } from "./OptionItem";
+import './Question.css';
 
 export function Question({question, onUpdate}) {
   function updateField(field, value) {

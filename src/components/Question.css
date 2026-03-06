@@ -1,0 +1,20 @@
+.options-section {
+  margin-top: 0.5rem;
+}
+
+.options-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.options-col-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr 64px 36px;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #888;
+  padding: 0 0.1rem;
+}
