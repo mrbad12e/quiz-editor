@@ -51,7 +51,7 @@ export function Question({question, onUpdate}) {
   return (
     <div className="question-card card">
       <div className="question-header">
-        <span className="question-number">Q1</span>
+        <span className="question-number">Q{question.sortOrder}</span>
         <button type="button" className="btn-remove" title="Remove question">
           ✕ Remove
         </button>
@@ -112,8 +112,22 @@ export function Question({question, onUpdate}) {
         </button>
       </div>
 
-      
-
+      {/* Section to choose correct answer(s) */}
+      {question.options.length > 0 && (
+        <div className="correct-section">
+          <h4>Correct Answer(s) *</h4>
+          <div className="correct-checkboxes">
+            {question.options.map(option => (
+              <label key={option.id} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={question.correctValues.includes(option.value)}
+                />
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
