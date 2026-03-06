@@ -47,6 +47,18 @@ export function Question({question, onUpdate}) {
       : question.correctValues;
     onUpdate({ ...question, options, correctValues });
   }
+
+  function toggleCorrect(value) {
+    /* 
+      Function that when question.options(N) have some options(M<=N) that is valid (not disabled)
+      Usecase: User select/toggle (n<=M) options to be question.correctValues
+      ==> Update question.correctValues
+    */
+    const correctValues = question.correctValues.includes(value)
+      ? question.correctValues.filter(v => v !== value)
+      : [...question.correctValues, value];
+    onUpdate({ ...question, correctValues });
+  }
   
   return (
     <div className="question-card card">
@@ -122,6 +134,8 @@ export function Question({question, onUpdate}) {
                 <input
                   type="checkbox"
                   checked={question.correctValues.includes(option.value)}
+                  onChange={() => toggleCorrect(option.value)}
+                  disabled={!option.value}
                 />
               </label>
             ))}
