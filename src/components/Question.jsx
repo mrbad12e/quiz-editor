@@ -12,7 +12,7 @@ export function Question({question, onUpdate}) {
   function updateField(field, value) {
     onUpdate({ ...question, [field]: value });
   }
-  
+
   function addOption() {
     const newOption = {
       id: crypto.randomUUID(),
@@ -23,6 +23,30 @@ export function Question({question, onUpdate}) {
     onUpdate({ ...question, options: [...question.options, newOption] });
   }
 
+  function updateOption(id, updated) {
+    // Find option
+    const options = question.options.map(o => (o.id === id ? updated : o));
+    const old = question.options.find(o => o.id === id);
+    let correctValues = question.correctValues;
+    // If exist that option && it was not the disired value(s), save the desired value into a variable
+    if (old && old.value !== updated.value) {
+      correctValues = correctValues.map(v => (v === old.value ? updated.value : v));
+    }
+    // Update the option
+    onUpdate({ ...question, options, correctValues });
+  }
+
+  function removeOption(id) {
+    // Find the Option id that want to remove
+    const removed = question.options.find(o => o.id === id);
+    // Save the option list that exclude that removed option
+    const options = question.options.filter(o => o.id !== id).map((o, i) => ({ ...o, sortOrder: i + 1 }));
+    // The option can be the correct answer of that question, so need to save the correct answer, not removing it
+    const correctValues = removed
+      ? question.correctValues.filter(v => v !== removed.value)
+      : question.correctValues;
+    onUpdate({ ...question, options, correctValues });
+  }
   
   return (
     <div className="question-card card">
@@ -78,6 +102,8 @@ export function Question({question, onUpdate}) {
           <OptionItem
             key={option.id}
             option={option}
+            onUpdate={updated => updateOption(option.id, updated)}
+            onRemove={() => removeOption(option.id)}
           />
         ))}
 
