@@ -1,0 +1,20 @@
+.option-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 64px 36px;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.option-value,
+.option-label {
+  width: 100%;
+}
+
+.option-sort {
+  width: 100%;
+}
+
+.option-btn-remove {
+  cursor: pointer;
+}
