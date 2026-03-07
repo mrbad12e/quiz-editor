@@ -1,0 +1,24 @@
+.question-card h4 {
+  margin: 0.8rem 0 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.question-number {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #4a6fa5;
+}
+
+.sort-input {
+  width: 80px;
+}
