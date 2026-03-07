@@ -4,6 +4,7 @@ Each option should have:
  - Label
  - Sort order
 */
+import './OptionItem.css'
 
 export function OptionItem({ option, onUpdate, onRemove }) {
   return (
@@ -29,7 +30,7 @@ export function OptionItem({ option, onUpdate, onRemove }) {
         className="option-sort"
         min={1}
       />
-      <button type="button" className="btn-remove" onClick={onRemove} title="Remove option">
+      <button type="button" className="option-btn-remove" onClick={onRemove} title="Remove option">
         ✕
       </button>
     </div>
