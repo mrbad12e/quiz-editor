@@ -33,7 +33,17 @@ export function QuestionList({questions, onUpdate}) {
       <div className="question-list-header">
         <h2>Questions {questions.length}</h2>
 
-        {questions.map(question => (
+        
+        <button type="button" className="btn-primary" onClick={addQuestion}>
+          + Add Question
+        </button>
+      </div>
+
+      {questions.length === 0 && (
+        <p className="empty-state">No questions yet. Click "Add Question" to get started.</p>
+      )}
+
+      {questions.map(question => (
         <Question
           key={question.id}
           question={question}
@@ -41,10 +51,12 @@ export function QuestionList({questions, onUpdate}) {
           onRemove={() => removeQuestion(question.id)}
         />
       ))}
+
+      {questions.length > 0 && (
         <button type="button" className="btn-primary" onClick={addQuestion}>
           + Add Question
         </button>
-      </div>
+      )}
     </div>
   );
 }
