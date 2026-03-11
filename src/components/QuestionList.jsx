@@ -1,4 +1,5 @@
 import { Question } from "./Question";
+import './QuestionList.css';
 
 export function QuestionList({questions, onUpdate}) {
   function addQuestion() {
@@ -32,11 +33,6 @@ export function QuestionList({questions, onUpdate}) {
     <div className="question-list">
       <div className="question-list-header">
         <h2>Questions {questions.length}</h2>
-
-        
-        <button type="button" className="btn-primary" onClick={addQuestion}>
-          + Add Question
-        </button>
       </div>
 
       {questions.length === 0 && (
@@ -52,11 +48,9 @@ export function QuestionList({questions, onUpdate}) {
         />
       ))}
 
-      {questions.length > 0 && (
-        <button type="button" className="btn-primary" onClick={addQuestion}>
-          + Add Question
-        </button>
-      )}
+      <button type="button" className="btn-primary" onClick={addQuestion}>
+        + Add Question
+      </button>
     </div>
   );
 }
