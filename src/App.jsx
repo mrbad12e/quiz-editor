@@ -2,7 +2,7 @@ import "./index.css";
 import { QuizMeta } from "./components/QuizMeta";
 import { QuestionList } from "./components/QuestionList";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 // To export quiz, a function to validate quiz's fields is required
 // And a function to strip the quiz from Object/Data shape into JSON
@@ -39,9 +39,37 @@ function stripIds(quiz) {
 const EMPTY_QUIZ = { name: "", description: "", questions: [] };
 
 export function App() {
-  const [quiz, setQuiz] = useState(EMPTY_QUIZ)
+  const [quiz, setQuiz] = useState(EMPTY_QUIZ);
+  const [errors, setErrors] = useState([]);
+  const fileInputRef = useRef(null);
+
+  function handleExport() {
+    const errs = validate(quiz);
+    if (errs.length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setErrors([]);
+    const data = stripIds(quiz);
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "quiz.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <div className="app">
+      <header>
+        <h1>Quiz Editor</h1>
+        <div>
+          <button type="button" className="btn-primary" onClick={handleExport}>
+            Export JSON
+          </button>
+        </div>
+      </header>
       <main className="editor">
         <QuizMeta quiz={quiz} onChange={setQuiz}/>
         <QuestionList 
