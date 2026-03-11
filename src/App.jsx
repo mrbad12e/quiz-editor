@@ -92,6 +92,14 @@ export function App() {
     e.target.value = "";
   }
 
+  // Usecase: User imported fileA.json => status OK, but want to redo from scratch
+  function handleReset() {
+    if (confirm("Reset the quiz? All data will be lost.")) {
+      setQuiz(EMPTY_QUIZ);
+      setErrors([]);
+    }
+  }
+
   return (
     <div className="app">
       <header>
@@ -109,6 +117,9 @@ export function App() {
           </button>
           <button type="button" className="btn-primary" onClick={handleExport}>
             Export JSON
+          </button>
+          <button type="button" onClick={handleReset}>
+            Reset
           </button>
         </div>
       </header>
