@@ -1,3 +1,5 @@
+import './QuizMeta.css';
+
 export function QuizMeta({ quiz, onChange }) {
   return (
     <div className="quiz-meta card">
