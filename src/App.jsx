@@ -104,10 +104,10 @@ export function App() {
             style={{ display: "none" }}
             onChange={handleImport}
           />
-          <button type="button" onClick={() => fileInputRef.current.click()}>
+          <button type="button" className="btn-primary" onClick={() => fileInputRef.current.click()}>
             Import JSON
           </button>
-          <button type="button" className="btn-primary" onClick={handleExport}>
+          <button type="button" className="btn-secondary" onClick={handleExport}>
             Export JSON
           </button>
         </div>
