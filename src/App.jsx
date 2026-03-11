@@ -1,10 +1,7 @@
-import { APITester } from "./APITester";
 import "./index.css";
 import { QuizMeta } from "./components/QuizMeta";
 import { QuestionList } from "./components/QuestionList";
 
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
 import { useState } from "react";
 
 // Empty quiz from the data shape
