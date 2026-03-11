@@ -70,6 +70,16 @@ export function App() {
           </button>
         </div>
       </header>
+
+      {errors.length > 0 && (
+        <div>
+          <strong>Please fix the following errors:</strong>
+          <ul>
+            {errors.map((e, i) => <li key={i}>{e}</li>)}
+          </ul>
+        </div>
+      )}
+
       <main className="editor">
         <QuizMeta quiz={quiz} onChange={setQuiz}/>
         <QuestionList 
