@@ -104,7 +104,7 @@ export function App() {
     <div className="app">
       <header>
         <h1>Quiz Editor</h1>
-        <div>
+        <div className="header-actions">
           <input
             ref={fileInputRef}
             type="file"
@@ -118,7 +118,7 @@ export function App() {
           <button type="button" className="btn-secondary" onClick={handleExport}>
             Export JSON
           </button>
-          <button type="button" onClick={handleReset}>
+          <button type="button" className="btn-danger" onClick={handleReset}>
             Reset
           </button>
         </div>

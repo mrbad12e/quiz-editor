@@ -65,7 +65,7 @@ export function Question({question, onUpdate, onRemove}) {
     <div className="question-card card">
       <div className="question-header">
         <span className="question-number">Q{question.sortOrder}</span>
-        <button type="button" className="btn-remove" title="Remove question" onClick={onRemove}>
+        <button type="button" className="btn-danger" title="Remove question" onClick={onRemove}>
           ✕ Remove
         </button>
       </div>
