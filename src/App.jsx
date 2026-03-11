@@ -6,7 +6,6 @@ import { useRef, useState } from "react";
 
 // To export quiz, a function to validate quiz's fields is required
 // And a function to strip the quiz from Object/Data shape into JSON
-
 function validate(quiz) {
   const errors = [];
   if (!quiz.name.trim()) errors.push("Quiz name is required.");
@@ -60,11 +59,38 @@ export function App() {
     URL.revokeObjectURL(url);
   }
 
+  function handleImport(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = event => {
+      try {
+        // Get JSON data
+        const parsed = JSON.parse(event.target.result);
+        console.log(parsed);
+      } catch {
+        setErrors(["Invalid JSON file."]);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  }
+
   return (
     <div className="app">
       <header>
         <h1>Quiz Editor</h1>
         <div>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".json"
+            style={{ display: "none" }}
+            onChange={handleImport}
+          />
+          <button type="button" onClick={() => fileInputRef.current.click()}>
+            Import JSON
+          </button>
           <button type="button" className="btn-primary" onClick={handleExport}>
             Export JSON
           </button>
