@@ -82,6 +82,8 @@ export function App() {
         // Get JSON data
         const parsed = JSON.parse(event.target.result);
         setQuiz(addQuiz(parsed));
+        // If JSON file has the correct data format, clear errors
+        setErrors([]);
       } catch {
         setErrors(["Invalid JSON file."]);
       }
