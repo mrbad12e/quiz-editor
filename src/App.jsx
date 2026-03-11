@@ -34,6 +34,20 @@ function stripIds(quiz) {
   };
 }
 
+// To import quiz, a JSON file with correct data shape/format is required
+// JSON data is parsed in handleImport
+// => A function to convert parsed JSON data to object/data shape is required
+function addQuiz(quiz) {
+  return {
+    ...quiz,
+    questions: quiz.questions.map(q => ({
+      ...q,
+      id: crypto.randomUUID(),
+      options: q.options.map(o => ({ ...o, id: crypto.randomUUID() })),
+    })),
+  };
+}
+
 // Empty quiz from the data shape
 const EMPTY_QUIZ = { name: "", description: "", questions: [] };
 
@@ -67,7 +81,7 @@ export function App() {
       try {
         // Get JSON data
         const parsed = JSON.parse(event.target.result);
-        console.log(parsed);
+        setQuiz(addQuiz(parsed));
       } catch {
         setErrors(["Invalid JSON file."]);
       }
