@@ -114,7 +114,7 @@ export function App() {
       </header>
 
       {errors.length > 0 && (
-        <div>
+        <div className="error-banner">
           <strong>Please fix the following errors:</strong>
           <ul>
             {errors.map((e, i) => <li key={i}>{e}</li>)}

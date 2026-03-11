@@ -85,3 +85,28 @@ textarea {
 .btn-secondary:hover {
   background: #d4dbe8;
 }
+
+/* Error banner */
+.error-banner {
+  background: #fff0f0;
+  border: 1px solid #f5c6c6;
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 1.25rem;
+  color: #c0392b;
+}
+
+.error-banner strong {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.error-banner ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.error-banner li {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
